@@ -26,9 +26,9 @@ model Slot {
   isBlocked    Boolean   @default(false)
 
   technician Technician @relation(
-    fields: [technicianId],
-    references: [id]
-  )
+  fields: [technicianId],
+  references: [id]
+)
 
   booking Booking?
 
