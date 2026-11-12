@@ -34,3 +34,17 @@ This is a **working starter architecture**, not a production-certified schedulin
 
 ## Security notes
 Stripe session success redirects are NOT treated as proof of payment; only verified webhooks confirm a booking. Customer status pages use unguessable access tokens. Do not expose admin secrets in client code. Admin password must be 16+ characters and ADMIN_SESSION_SECRET must be a different long random string.
+
+
+## Latest release notes
+- All 13 supplied installation photographs are in `public/projects/` and displayed on the homepage.
+- Pricing: up to 43 inches $40–100; 44–54 $50–150; 55–65 $50–200; 66–85 $50–200; over 85 $75–200. Prices are ranges; displayed estimate uses the minimum, final price determined on site.
+- Booking requires no Stripe payment or deposit; confirmation happens when a booking is saved. Set up database, slots and email environment variables before accepting bookings.
+- Optional WhatsApp contact: set `NEXT_PUBLIC_WHATSAPP_NUMBER` in Vercel Project Settings > Environment Variables and redeploy. No number means no WhatsApp button.
+- Upload the **contents of this folder**, not the ZIP file, to the GitHub repository root.
+
+## Business contact
+- Phone and WhatsApp: +1 (226) 336-7339
+- Email: info@sptvinstaller.com
+- WhatsApp button defaults to this number; override using NEXT_PUBLIC_WHATSAPP_NUMBER in Vercel.
+- For automated booking confirmation emails, verify sptvinstaller.com with Resend and configure RESEND_API_KEY and EMAIL_FROM in Vercel.
