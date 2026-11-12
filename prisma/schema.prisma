@@ -1,3 +1,4 @@
+
 generator client {
   provider = "prisma-client-js"
 }
@@ -6,6 +7,51 @@ datasource db {
   provider = "sqlite"
   url      = env("DATABASE_URL")
 }
-model Technician { id String @id @default(cuid()) name String country String city String active Boolean @default(true) slots Slot[] bookings Booking[] }
-model Slot { id String @id @default(cuid()) technicianId String startAt DateTime endAt DateTime isBlocked Boolean @default(false) technician Technician @relation(fields:[technicianId], references:[id]) booking Booking? @@unique([technicianId,startAt]) }
-model Booking { id String @id @default(cuid()) customerName String email String phone String address String postal String city String country String tvSize String mountType String wallType String notes String? priceCents Int depositCents Int currency String status String @default("PENDING_PAYMENT") createdAt DateTime @default(now()) slotId String @unique slot Slot @relation(fields:[slotId],references:[id]) technicianId String technician Technician @relation(fields:[technicianId],references:[id]) stripeSessionId String? @unique accessToken String @unique }
+
+model Technician {
+  id       String    @id @default(cuid())
+  name     String
+  country  String
+  city     String
+  active   Boolean   @default(true)
+  slots    Slot[]
+  bookings Booking[]
+}
+
+model Slot {
+  id           String     @id @default(cuid())
+  technicianId String
+  startAt      DateTime
+  endAt        DateTime
+  isBlocked    Boolean    @default(false)
+  technician   Technician @relation(fields: [technicianId], references: [id])
+  booking      Booking?
+
+  @@unique([technicianId, startAt])
+}
+
+model Booking {
+  id              String     @id @default(cuid())
+  customerName    String
+  email           String
+  phone           String
+  address         String
+  postal          String
+  city            String
+  country         String
+  tvSize          String
+  mountType       String
+  wallType        String
+  notes           String?
+  priceCents      Int
+  depositCents    Int
+  currency        String
+  status          String     @default("PENDING_PAYMENT")
+  createdAt       DateTime   @default(now())
+  slotId          String     @unique
+  slot            Slot       @relation(fields: [slotId], references: [id])
+  technicianId    String
+  technician      Technician @relation(fields: [technicianId], references: [id])
+  stripeSessionId String?    @unique
+  accessToken     String     @unique
+}
