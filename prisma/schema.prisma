@@ -19,18 +19,14 @@ model Technician {
 }
 
 model Slot {
-  id           String    @id @default(cuid())
+  id           String   @id @default(cuid())
   technicianId String
   startAt      DateTime
   endAt        DateTime
-  isBlocked    Boolean   @default(false)
+  isBlocked    Boolean  @default(false)
 
-  technician Technician @relation(
-  fields: [technicianId],
-  references: [id]
-)
-
-  booking Booking?
+  technician Technician @relation(fields: [technicianId], references: [id])
+  booking    Booking?
 
   @@unique([technicianId, startAt])
 }
@@ -59,13 +55,7 @@ model Booking {
   stripeSessionId String?  @unique
   accessToken     String   @unique
 
-  slot Slot @relation(
-    fields: [slotId],
-    references: [id]
-  )
-
-  technician Technician @relation(
-    fields: [technicianId],
-    references: [id]
-  )
+  slot       Slot       @relation(fields: [slotId], references: [id])
+  technician Technician @relation(fields: [technicianId], references: [id])
 }
+  
