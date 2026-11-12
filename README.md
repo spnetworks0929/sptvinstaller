@@ -48,3 +48,21 @@ Stripe session success redirects are NOT treated as proof of payment; only verif
 - Email: info@sptvinstaller.com
 - WhatsApp button defaults to this number; override using NEXT_PUBLIC_WHATSAPP_NUMBER in Vercel.
 - For automated booking confirmation emails, verify sptvinstaller.com with Resend and configure RESEND_API_KEY and EMAIL_FROM in Vercel.
+
+## November 2026: SEO and lead generation update
+
+- Home page: contact details, experience since 2015, TV mount sales, animated mounting guide, real project photos (requested project-02 removed), service areas and Google review link (no unverified rating or fabricated reviews).
+- Location pages: `/locations/toronto` and `/locations/houston`; sitemap and robots metadata.
+- Booking form: preferred date/time and optional supply of TV mount; **request only**, no payment, `PENDING_CONFIRMATION`.
+- Email: customer acknowledgment and staff notification via Resend. Configure `RESEND_API_KEY`, verified `EMAIL_FROM`, and `BOOKING_NOTIFICATION_EMAIL`. PrivateEmail hosting alone does not configure Resend; verify the sending domain with the email provider and maintain PrivateEmail MX records.
+- Set `NEXT_PUBLIC_BASE_URL` to your actual domain. WhatsApp number via `NEXT_PUBLIC_WHATSAPP_NUMBER`.
+
+### IMPORTANT: database before going live
+
+This starter uses Prisma SQLite (`DATABASE_URL=file:./dev.db`). Vercel's deployment filesystem is not a persistent SQLite database, so **live bookings will not work reliably** on Vercel as-is. Migrate Prisma to a persistent hosted database (such as managed PostgreSQL), change the datasource provider, configure `DATABASE_URL` in Vercel, and run the schema migration before publishing the booking form. Do not accept real customer requests until an end-to-end test confirms database writes and email delivery.
+
+The revised schema adds `preferredDate`, `preferredTime`, `needsMount`, and optional technician/slot relations. Run `npx prisma format`, `npx prisma validate`, and `npx prisma db push` in a configured development environment, then `npm run build`. Schema changes require database migration. Production setup was **not** tested against a live Vercel environment.
+
+### GitHub upload
+
+Upload the **contents of this ZIP** to the repository root, not the ZIP itself or an extra enclosing directory. Replace the existing `app`, `lib`, `prisma`, `public`, and root config files. Delete the old `public/projects/project-02.jpg` in GitHub if it is still tracked; simply omitting it from an upload will not delete it from the repository. Do not upload `.env` files with real secrets.

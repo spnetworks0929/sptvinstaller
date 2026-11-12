@@ -1,3 +1,4 @@
-import './globals.css';import type {Metadata} from 'next';
-export const metadata:Metadata={title:'SP TV Installer | Premium TV Mounting',description:'Professional TV mounting in Canada and the USA. Choose your installation and book online.'};
+import './globals.css';
+import type {Metadata} from 'next';
+export const metadata:Metadata={metadataBase:new URL(process.env.NEXT_PUBLIC_BASE_URL||'https://sptvinstaller.vercel.app'),title:{default:'SP TV Installer | TV Mounting Toronto GTA & Houston',template:'%s | SP TV Installer'},description:'Professional TV mounting and TV mounts for sale in Toronto, the GTA, surrounding Ontario communities and Greater Houston, TX. Serving customers since 2015. Request an appointment with no upfront payment.',keywords:['TV mounting Toronto','TV installation GTA','TV mounting Houston','TV wall mounting near me','fireplace TV mounting','TV mounts for sale'],openGraph:{title:'SP TV Installer | Professional TV Mounting',description:'5,000+ TVs mounted. Request an appointment in Greater Toronto or Greater Houston. No upfront payment.',type:'website'},robots:{index:true,follow:true}};
 export default function Layout({children}:{children:React.ReactNode}){return <html lang="en"><body>{children}</body></html>}
