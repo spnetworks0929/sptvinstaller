@@ -334,6 +334,11 @@ export default function Home() {
                 </Link>
               </div>
               <div>
+                <Link href="/locations/mississauga">
+                  Mississauga TV Mounting &amp; Installation →
+                </Link>
+              </div>
+              <div>
                 <Link href="/locations/kitchener-waterloo">
                   Kitchener, Waterloo & Cambridge TV mounting →
                 </Link>
