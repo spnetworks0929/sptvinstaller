@@ -1,5 +1,4 @@
 
-
 import type { MetadataRoute } from 'next';
 
 export default function sitemap(): MetadataRoute.Sitemap {
@@ -19,6 +18,12 @@ export default function sitemap(): MetadataRoute.Sitemap {
       priority: 0.9,
     },
     {
+      url: `${baseUrl}/locations/kitchener-waterloo`,
+      lastModified: new Date(),
+      changeFrequency: 'monthly',
+      priority: 0.9,
+    },
+    {
       url: `${baseUrl}/locations/houston`,
       lastModified: new Date(),
       changeFrequency: 'monthly',
@@ -26,4 +31,3 @@ export default function sitemap(): MetadataRoute.Sitemap {
     },
   ];
 }
-
