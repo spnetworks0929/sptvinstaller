@@ -34,6 +34,7 @@ export default function Home() {
         <a className="topContact emailTop" href="mailto:info@sptvinstaller.com">
           info@sptvinstaller.com
         </a>
+
         <Link className="navcta" href="/book">
           Book installation <ArrowRight size={16} />
         </Link>
@@ -241,6 +242,7 @@ export default function Home() {
               </div>
             ))}
           </div>
+
           <h3 className="animationHeading">
             See how professional TV mounting works
           </h3>
@@ -257,21 +259,52 @@ export default function Home() {
           </div>
         </section>
 
+        {/* GOOGLE REVIEWS SECTION */}
         <section id="reviews" className="section wrap extraSection">
           <div className="eyebrow">CUSTOMER FEEDBACK</div>
-          <h2>See what customers say.</h2>
+          <h2>Your feedback matters.</h2>
           <p>
-            Read verified feedback on Google before choosing your installer.
-            We only publish genuine reviews and verified ratings.
+            Had your TV installed by SP TV Installer? Share your honest experience
+            with other customers. You can also explore feedback on Google.
           </p>
-          <a
-            className="btn dark"
-            href="https://www.google.com/search?q=SP+TV+Installer+reviews"
-            target="_blank"
-            rel="noopener noreferrer"
+
+          <div
+            style={{
+              display: 'flex',
+              gap: '12px',
+              flexWrap: 'wrap',
+              marginTop: '24px',
+            }}
           >
-            Find our Google reviews <ArrowRight size={17} />
-          </a>
+            <a
+              className="btn gold"
+              href="https://g.page/r/CbEssiIgFwRSEBM/review"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              Leave Us a Google Review <Star size={17} />
+            </a>
+
+            <a
+              className="btn dark"
+              href="https://www.google.com/search?q=SP+TV+Installer+reviews"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              Read Google Reviews <ArrowRight size={17} />
+            </a>
+          </div>
+
+          <p
+            style={{
+              fontSize: '14px',
+              marginTop: '20px',
+              opacity: 0.75,
+            }}
+          >
+            Already had your TV installed by our team?
+            We would appreciate your honest feedback.
+          </p>
         </section>
 
         <section id="areas" className="section wrap extraSection">
